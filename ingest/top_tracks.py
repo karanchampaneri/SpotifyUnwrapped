@@ -77,3 +77,24 @@ if __name__ == "__main__":
     sp = authenticate_user()
     df = get_top_tracks(sp, time_range="medium_term", limit=10)
     print(df)
+
+
+#Spotify’s Top Tracks endpoint caps out at 50 per request. If you want top 100, have to page through the results:
+# def get_top_tracks(sp, time_range="medium_term", limit=50):
+#     items = []
+#     offset = 0
+#     while offset < limit:
+#         batch = sp.current_user_top_tracks(
+#             time_range=time_range,
+#             limit=min(50, limit - offset),
+#             offset=offset
+#         )["items"]
+#         items.extend(batch)
+#         if len(batch) < 50:
+#             break
+#         offset += 50
+
+#     # then normalize items → DataFrame as before
+#     df = pd.json_normalize(items)
+#     ...
+#     return df

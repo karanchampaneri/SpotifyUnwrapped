@@ -36,7 +36,7 @@ def get_recently_played(sp, limit=50):
         "track.album.name",
         "track.album.release_date",
         "track.duration_ms",
-        "context.uri",
+        # "context.uri",
         "track.external_urls.spotify",
     ]]
 
@@ -46,7 +46,7 @@ def get_recently_played(sp, limit=50):
         "track.album.name": "album_name",
         "track.album.release_date": "album_release_date",
         "track.duration_ms": "duration_ms",
-        "context.uri": "context_uri",
+        # "context.uri": "context_uri",
         "track.external_urls.spotify": "spotify_url",
     }, inplace=True)
     
@@ -71,7 +71,7 @@ def get_recently_played(sp, limit=50):
         "album_name",
         "album_release_date",
         "duration_min",
-        "context_uri",
+        # "context_uri",
         "spotify_url",
     ]]
 
