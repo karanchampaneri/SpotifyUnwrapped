@@ -1,4 +1,4 @@
-# Custom Spotify Wrapped
+## SpotifyUwrapped
 
 A Python-based ETL pipeline to extract, transform, and analyze your Spotify user data using only supported Web API endpoints. Designed to work without deprecated features (e.g., audio-features, recommendations) which now require extended access.
 
