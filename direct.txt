@@ -1,0 +1,30 @@
+custom-spotify-wrapped/
+│
+├── .env                       # Environment variables (client ID, secret)
+├── .gitignore                # Ignore .env, __pycache__, CSVs
+├── requirements.txt          # Python dependencies
+├── README.md                 # Project overview & instructions
+│
+├── main.py                   # Entry point to run the full ETL + analysis flow
+│
+├── auth/
+│   └── spotify_auth.py       # Handles Spotify OAuth and token management
+│
+├── ingest/
+│   └── top_tracks.py         # Fetches top tracks/artists from Spotify
+│   └── audio_features.py     # Fetches audio features for those tracks
+│
+├── transform/
+│   └── clean_tracks.py       # Cleans & joins top tracks + audio features
+│   └── summarize.py          # Aggregates and calculates insights
+│
+├── recommend/
+│   └── recommend_tracks.py   # Uses Spotify recommendations API
+│
+├── output/
+│   └── export.py             # Save to CSV or SQLite
+│   └── visualize.py          # (Optional) matplotlib/plotly charts
+│
+└── data/
+    └── top_tracks.csv        # Example output data
+    └── recommended.csv       # Generated recommendations
