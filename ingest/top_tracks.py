@@ -1,40 +1,79 @@
-import spotipy
 import pandas as pd
-
 from auth.spotify_auth import authenticate_user
 
-sp = authenticate_user()
-
-# Get top 
 
 def get_top_tracks(sp, time_range="medium_term", limit=50):
 
     # fetach top tracks
     results = sp.current_user_top_tracks(time_range=time_range, limit=limit)
-    # print(results, type(results))
-    top_tracks = results['items']
+    top_tracks = results.get('items', [])
 
-    # flattens nested json in list of dicts to df
+    DATE_FORMAT = "%Y-%m-%d"
+
+    # flattens nested json to dataframe
     df = pd.json_normalize(top_tracks)
 
     # columns to use
     df = df[[
+        "id",
         "name",
         "album.name",
+        "album.release_date",
         "duration_ms",
         "popularity",
-        "id",
-        "artists"
+        "explicit",
+        "track_number",
+        "artists",
+        "external_urls.spotify",
     ]]
 
     df.rename(columns={
+        "id": "track_id",
         "name": "track_name",
         "album.name": "album_name",
-        "id": "track_id",
+        "album.release_date": "album_release_date",
+        "external_urls.spotify": "spotify_url",
     }, inplace=True)
 
-    #
+    # #create track l"inks to spotify
+    # df["spotify_url"] = df["track_id"].apply(lambda tid: f"https://open.spotify.com/track/{tid}")
 
+    #collapse the list of artists into a single comma separated string
+    df["artist_names"] = df["artists"].apply(
+        lambda artists: ", ".join([artist["name"] for artist in artists]) #for each artist in artists list join the names with a comma
+    )
+
+    # convert duration from ms to minutes
+    df["duration_min"] = df["duration_ms"] / 60000
+
+    # reorder and drop columns
+
+    df = df[[
+        "track_id",
+        "track_name",
+        "track_number",
+        "duration_min",
+        "album_name",
+        "artist_names",
+        "album_release_date",
+        "popularity",
+        "explicit",
+        "spotify_url",
+    ]]
+
+    df["album_release_date"] = pd.to_datetime(df["album_release_date"], format=DATE_FORMAT)
+
+
+    return df
+
+
+
+
+# sp = authenticate_user()
+# df = get_top_tracks(sp, time_range="medium_term", limit=3)
+# print(df)
+if __name__ == "__main__":
+    # Quick test/demo
+    sp = authenticate_user()
+    df = get_top_tracks(sp, time_range="medium_term", limit=10)
     print(df)
-
-get_top_tracks(sp, 'medium_term', 3 )

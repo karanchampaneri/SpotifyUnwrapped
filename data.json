@@ -1,0 +1,50 @@
+{
+  "album": {
+    "album_type": "album",
+    "artists": [
+      {
+        "name": "PARTYNEXTDOOR",
+        "id": "2HPaUgqeutzr3jx5a9WyDV",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/2HPaUgqeutzr3jx5a9WyDV"
+        }
+      },
+      {
+        "name": "Drake",
+        "id": "3TVXtAsR1Inumwj472S9r4",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/3TVXtAsR1Inumwj472S9r4"
+        }
+      }
+    ],
+    "name": "$ome $exy $ongs 4 U",
+    "release_date": "2025-02-14",
+    "total_tracks": 21,
+    "external_urls": {
+      "spotify": "https://open.spotify.com/album/6Rl6YoCarF2GHPSQmmFjuR"
+    }
+  },
+  "artists": [
+    {
+      "name": "Drake",
+      "id": "3TVXtAsR1Inumwj472S9r4",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/3TVXtAsR1Inumwj472S9r4"
+      }
+    }
+  ],
+  "duration_ms": 193054,
+  "explicit": true,
+  "external_ids": {
+    "isrc": "USLD91772028"
+  },
+  "external_urls": {
+    "spotify": "https://open.spotify.com/track/5Nz7hI3cCOHmMR4vSLJ1An"
+  },
+  "id": "5Nz7hI3cCOHmMR4vSLJ1An",
+  "name": "GIMME A HUG",
+  "popularity": 80,
+  "track_number": 10,
+  "type": "track",
+  "uri": "spotify:track:5Nz7hI3cCOHmMR4vSLJ1An"
+}

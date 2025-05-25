@@ -14,7 +14,8 @@ def authenticate_user():
     sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id,
                                                 client_secret=client_secret,
                                                 redirect_uri=redirect_uri,
-                                                scope="user-library-read, user-top-read, user-read-private"))
+                                                # scope="user-library-read, user-top-read, user-read-private",
+                                                scope="user-library-read, user-top-read, user-read-private, user-read-recently-played"))
     
     return sp
 
