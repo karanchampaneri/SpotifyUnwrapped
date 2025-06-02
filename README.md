@@ -2,29 +2,15 @@
 
 A Python-based ETL pipeline to extract, transform, and analyze your Spotify user data using only supported Web API endpoints. Designed to work without deprecated features (e.g., audio-features, recommendations) which now require extended access.
 
-## 🚀 Features
+## Features
 
-- **Authentication** via OAuth2 (user-top-read, user-read-private, user-read-recently-played, user-library-read)
-- **Ingestion** of:
+- Authentication via OAuth2 (user-top-read, user-read-private, user-read-recently-played, user-library-read)
+- Ingests top tracks, artists, recently played tracks, saved tracks, playlists, and artist genres
+- Transforms data into clean pandas DataFrames
+- Provides summary metrics such as total listening time, plays per day, genre distribution, and top tracks/artists
+- Exports all tables to CSV for further analysis
 
-  - Top Tracks & Top Artists
-  - Recently Played Tracks
-  - Saved (Liked) Tracks
-  - User Playlists & Playlist Tracks
-  - Artist Genres
-
-- **Transformation** into clean pandas DataFrames
-- **Summary Metrics**:
-
-  - Total listening time
-  - Plays per day
-  - Genre distribution among top artists
-  - Top tracks by popularity
-  - Top artists by follower count
-
-- **Export** all tables to CSV for further analysis
-
-## 📋 Prerequisites
+## Prerequisites
 
 - Python 3.8+
 - A Spotify Developer account and app (created before Nov 27, 2024, or with extended access)
@@ -36,7 +22,7 @@ A Python-based ETL pipeline to extract, transform, and analyze your Spotify user
   SPOTIPY_REDIRECT_URI=http://127.0.0.1:8888/callback
   ```
 
-## ⚙️ Installation
+## Installation
 
 ```bash
 git clone https://github.com/yourusername/custom-spotify-wrapped.git
@@ -47,41 +33,20 @@ source venv/bin/activate   # on macOS/Linux
 pip install -r requirements.txt
 ```
 
-## 📂 Project Structure
+## Limitations
 
-```
-custom-spotify-wrapped/
-├── .env                # your Spotify credentials
-├── .gitignore
-├── requirements.txt
-├── README.md
-├── auth/               # OAuth2 authentication
-│   └── spotify_auth.py
-├── ingest/             # data ingestion modules
-│   ├── top_tracks.py
-│   ├── top_artists.py
-│   ├── recently_played.py
-│   ├── saved_tracks.py
-│   ├── playlists.py
-│   └── genres.py
-├── transform/          # build relational tables
-│   └── model.py
-├── summarize/          # summary metric functions
-│   └── metrics.py
-├── output/             # CSV export utility
-│   └── export.py
-├── data/               # generated CSV output
-└── main.py             # orchestrates the full ETL & analysis
-```
-
-## ⚠️ Limitations
-
-- **Audio Features**, **Recommendations**, **Related Artists** endpoints require Spotify extended access and are not supported by default.
+- Audio Features, Recommendations, and Related Artists endpoints require Spotify extended access and are not supported by default.
 - Data is limited to the top 50 or recently played 50 items per endpoint unless extended pagination is implemented.
 
-## 🌟 Future Work
+## Future Work
 
 - Add Matplotlib/Streamlit visualizations
 - Package as CLI tool or Docker container
 - Schedule regular runs with cron or GitHub Actions
 - Expand pagination to fetch full history
+
+## Next Steps
+
+- Integrate Gemini-based roast generator.
+- Add image collage feature from album art.
+- Decide between Discord bot and web frontend.
